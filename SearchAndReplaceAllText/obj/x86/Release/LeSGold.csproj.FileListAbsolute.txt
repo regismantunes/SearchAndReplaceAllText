@@ -1,0 +1,8 @@
+D:\Sistemas\Testes\LeSGold\LeSGold\bin\x86\Release\LeSGold.exe.config
+D:\Sistemas\Testes\LeSGold\LeSGold\bin\x86\Release\LeSGold.exe
+D:\Sistemas\Testes\LeSGold\LeSGold\bin\x86\Release\LeSGold.pdb
+D:\Sistemas\Testes\LeSGold\LeSGold\obj\x86\Release\LeSGold.Properties.Resources.resources
+D:\Sistemas\Testes\LeSGold\LeSGold\obj\x86\Release\LeSGold.csproj.GenerateResource.Cache
+D:\Sistemas\Testes\LeSGold\LeSGold\obj\x86\Release\LeSGold.exe
+D:\Sistemas\Testes\LeSGold\LeSGold\obj\x86\Release\LeSGold.pdb
+D:\Sistemas\Testes\LeSGold\LeSGold\obj\x86\Release\LeSGold.FrmLSGold.resources
