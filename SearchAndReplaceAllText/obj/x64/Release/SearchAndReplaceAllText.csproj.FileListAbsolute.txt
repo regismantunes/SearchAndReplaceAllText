@@ -14,3 +14,13 @@ D:\Sistemas\Testes\LeSGold\SearchAndReplaceAllText\bin\x64\Release\SearchAndRepl
 D:\Sistemas\Testes\LeSGold\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.exe
 D:\Sistemas\Testes\LeSGold\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.pdb
 D:\Sistemas\Testes\LeSGold\SearchAndReplaceAllText\obj\x64\Release\RA.SearchAndReplaceAllText.FrmSearch.resources
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\x64\Release\SearchAndReplaceAllText.exe.config
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\x64\Release\SearchAndReplaceAllText.exe
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\x64\Release\SearchAndReplaceAllText.pdb
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.csprojAssemblyReference.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\RA.SearchAndReplaceAllText.FrmSearch.resources
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\RA.Properties.Resources.resources
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.csproj.GenerateResource.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.csproj.CoreCompileInputs.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.exe
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\x64\Release\SearchAndReplaceAllText.pdb

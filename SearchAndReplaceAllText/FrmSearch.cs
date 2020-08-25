@@ -66,7 +66,7 @@ namespace RA.SearchAndReplaceAllText
                         bool caseSensitive = chkCaseSensitive.Checked;
                         string texto = !caseSensitive ? txtFind.Text.ToUpper() : txtFind.Text;
 
-                        searchInDirectory(txtSearchDirectory.Text, txtSearchFilter.Text, caseSensitive, filesToReturn);
+                        searchInDirectory(txtSearchDirectory.Text, txtSearchFilter.Text, chkSubdiretories.Checked, chkFileDirectoriesNames.Checked, texto, caseSensitive, filesToReturn);
                     }
                     else
                         throw new DirectoryNotFoundException("The directory was not found.");
@@ -84,17 +84,17 @@ namespace RA.SearchAndReplaceAllText
             return filesToReturn.ToArray();
         }
 
-        private void searchInDirectory(string directorySearch, string textSearch, bool caseSensitive, List<string> filesToReturn)
+        private void searchInDirectory(string directorySearch, string searchFilter, bool searchInSubdiretories, bool searchInNames, string textSearch, bool caseSensitive, List<string> filesToReturn)
         {
             try
             {
-                string[] auxFiles = Directory.GetFiles(directorySearch, txtSearchFilter.Text, SearchOption.TopDirectoryOnly);
+                string[] auxFiles = Directory.GetFiles(directorySearch, searchFilter, SearchOption.TopDirectoryOnly);
                 foreach (string fileToSeach in auxFiles)
                 {
                     try
                     {
                         string stringToSearch;
-                        if (!chkFileDirectoriesNames.Checked)
+                        if (!searchInNames)
                             stringToSearch = !caseSensitive ? File.ReadAllText(fileToSeach).ToUpper() : File.ReadAllText(fileToSeach);
                         else
                         {
@@ -111,11 +111,11 @@ namespace RA.SearchAndReplaceAllText
                     }
                 }
 
-                if (chkSubdiretories.Checked)
+                if (searchInSubdiretories)
                 {
                     string[] auxDirectories = Directory.GetDirectories(directorySearch);
                     foreach (string directoryToSearch in auxDirectories)
-                        searchInDirectory(directoryToSearch, textSearch, caseSensitive, filesToReturn);
+                        searchInDirectory(directoryToSearch, searchFilter, searchInSubdiretories, searchInNames, textSearch, caseSensitive, filesToReturn);
                 }
             }
             catch (UnauthorizedAccessException)
