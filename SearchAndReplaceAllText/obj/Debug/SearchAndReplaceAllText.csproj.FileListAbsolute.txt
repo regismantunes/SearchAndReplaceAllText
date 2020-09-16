@@ -1,0 +1,10 @@
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\Debug\SearchAndReplaceAllText.exe.config
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\Debug\SearchAndReplaceAllText.exe
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\bin\Debug\SearchAndReplaceAllText.pdb
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\RA.SearchAndReplaceAllText.FrmSearch.resources
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\RA.Properties.Resources.resources
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.csproj.GenerateResource.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.csproj.CoreCompileInputs.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.exe
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.pdb
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.csprojAssemblyReference.cache

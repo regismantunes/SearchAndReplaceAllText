@@ -40,7 +40,7 @@ namespace RA.SearchAndReplaceAllText
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.SelectedPath = txtSearchDirectory.Text;
 
-            if(fbd.ShowDialog() == DialogResult.OK)
+            if (fbd.ShowDialog() == DialogResult.OK)
                 txtSearchDirectory.Text = fbd.SelectedPath;
         }
 
@@ -206,11 +206,16 @@ namespace RA.SearchAndReplaceAllText
                             }
                             else
                             {
-                                txtPreview.Text = File.ReadAllText(_files[_iFiles]);
-                                writeLog("Reading {0}", _files[_iFiles]);
+                                if (chkFileDirectoriesNames.Checked)
+                                    writeLog("File found: {0}", _files[_iFiles]);
+                                else
+                                {
+                                    txtPreview.Text = File.ReadAllText(_files[_iFiles]);
+                                    writeLog("Reading {0}", _files[_iFiles]);
 
-                                Regex r = new Regex(txtFind.Text);
-                                writeLog("{0} incidences", r.Matches(txtPreview.Text).Count);
+                                    Regex r = new Regex(txtFind.Text);
+                                    writeLog("{0} incidences", r.Matches(txtPreview.Text).Count);
+                                }
                             }
                         }
                     }
