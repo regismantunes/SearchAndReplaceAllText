@@ -176,7 +176,8 @@ namespace RA.SearchAndReplaceAllText
 
         private void btnFindNext_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtFind.Text))
+            string textToFind = txtFind.Text;
+            if (String.IsNullOrEmpty(textToFind))
             {
                 MyMessage.ShowError("Find text cannot be empty.");
                 txtFind.Focus();
@@ -213,8 +214,17 @@ namespace RA.SearchAndReplaceAllText
                                     txtPreview.Text = File.ReadAllText(_files[_iFiles]);
                                     writeLog("Reading {0}", _files[_iFiles]);
 
-                                    Regex r = new Regex(txtFind.Text);
-                                    writeLog("{0} incidences", r.Matches(txtPreview.Text).Count);
+                                    string textToSearch;
+                                    if (!chkCaseSensitive.Checked)
+                                    {
+                                        textToFind = textToFind.ToUpper();
+                                        textToSearch = txtPreview.Text.ToUpper();
+                                    }
+                                    else
+                                        textToSearch = txtPreview.Text;
+
+                                    Regex r = new Regex(textToFind);
+                                    writeLog("{0} incidences", r.Matches(textToSearch).Count);
                                 }
                             }
                         }
@@ -226,13 +236,6 @@ namespace RA.SearchAndReplaceAllText
                     }
                 });
             }
-        }
-
-        private void txtFind_TextChanged(object sender, EventArgs e)
-        {
-            _iFiles = -1;
-            _files = new string[0];
-            txtPreview.Text = String.Empty;
         }
 
         private void btnReplace_Click(object sender, EventArgs e)
@@ -383,6 +386,25 @@ namespace RA.SearchAndReplaceAllText
         private void FrmSearch_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
+
+            rbtnFile_CheckedChanged(sender, e);
+        }
+
+        private void deleteSearch()
+        {
+            _iFiles = -1;
+            _files = new string[0];
+            txtPreview.Text = String.Empty;
+        }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            deleteSearch();
+        }
+
+        private void chkCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            deleteSearch();
         }
     }
 }

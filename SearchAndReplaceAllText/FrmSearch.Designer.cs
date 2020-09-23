@@ -114,6 +114,7 @@
             this.chkCaseSensitive.TabIndex = 2;
             this.chkCaseSensitive.Text = "Case Sensitive";
             this.chkCaseSensitive.UseVisualStyleBackColor = true;
+            this.chkCaseSensitive.CheckedChanged += new System.EventHandler(this.chkCaseSensitive_CheckedChanged);
             // 
             // txtPreview
             // 
@@ -257,10 +258,12 @@
             // rbtnDirectory
             // 
             this.rbtnDirectory.AutoSize = true;
+            this.rbtnDirectory.Checked = true;
             this.rbtnDirectory.Location = new System.Drawing.Point(7, 43);
             this.rbtnDirectory.Name = "rbtnDirectory";
             this.rbtnDirectory.Size = new System.Drawing.Size(67, 17);
             this.rbtnDirectory.TabIndex = 3;
+            this.rbtnDirectory.TabStop = true;
             this.rbtnDirectory.Text = "Directory";
             this.rbtnDirectory.UseVisualStyleBackColor = true;
             // 
@@ -284,12 +287,10 @@
             // rbtnFile
             // 
             this.rbtnFile.AutoSize = true;
-            this.rbtnFile.Checked = true;
             this.rbtnFile.Location = new System.Drawing.Point(7, 20);
             this.rbtnFile.Name = "rbtnFile";
             this.rbtnFile.Size = new System.Drawing.Size(41, 17);
             this.rbtnFile.TabIndex = 0;
-            this.rbtnFile.TabStop = true;
             this.rbtnFile.Text = "File";
             this.rbtnFile.UseVisualStyleBackColor = true;
             this.rbtnFile.CheckedChanged += new System.EventHandler(this.rbtnFile_CheckedChanged);
