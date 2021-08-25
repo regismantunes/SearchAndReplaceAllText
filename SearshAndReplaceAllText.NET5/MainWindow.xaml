@@ -1,0 +1,91 @@
+﻿<Window x:Class="SearshAndReplaceAllText.NET5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SearshAndReplaceAllText.NET5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Find:"/>
+            <RichTextBox Grid.Row="1" Grid.Column="0"/>
+            <GridSplitter Grid.Row="1" Grid.Column="1" Width="3"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Replace with:"/>
+            <RichTextBox Grid.Row="1" Grid.Column="2"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Header="Search in:">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" MinWidth="128"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <RadioButton Grid.Row="0" Grid.Column="0"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="File:"/>
+                    <TextBox Grid.Row="0" Grid.Column="2"/>
+                    <Button Grid.Row="0" Grid.Column="3" Content="..."/>
+                    <RadioButton Grid.Row="1" Grid.Column="0"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="Directory:"/>
+                    <TextBox Grid.Row="1" Grid.Column="2"/>
+                    <Button Grid.Row="1" Grid.Column="3" Content="..."/>
+                    <Label Grid.Row="2" Grid.Column="1" Content="Filter:"/>
+                    <TextBox Grid.Row="2" Grid.Column="2"/>
+                    <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Content="Search in subdirectories"/>
+                    <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="Search in files/directories names"/>
+                </Grid>
+            </GroupBox>
+            <CheckBox Grid.Row="1" Content="Case sensitive"/>
+            <Button Grid.Row="2" Content="Find next"/>
+            <Button Grid.Row="3" Content="Replace"/>
+            <RichTextBox Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="5" Content="Find all"/>
+            <Button Grid.Row="6" Content="Replace all"/>
+            <Button Grid.Row="7" Content="Stop search"/>
+        </Grid>
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="3"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center"/>
+        <RichTextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                     MinHeight="75"/>
+    </Grid>
+</Window>

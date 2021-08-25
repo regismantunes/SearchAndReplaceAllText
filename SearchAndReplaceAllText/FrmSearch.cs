@@ -28,8 +28,10 @@ namespace RA.SearchAndReplaceAllText
 
         private void btnSearchFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.FileName = txtSearchFile.Text;
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                FileName = txtSearchFile.Text
+            };
 
             if (ofd.ShowDialog() == DialogResult.OK)
                 txtSearchFile.Text = ofd.FileName;
@@ -37,8 +39,10 @@ namespace RA.SearchAndReplaceAllText
 
         private void btnSearchDirectory_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = txtSearchDirectory.Text;
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                SelectedPath = txtSearchDirectory.Text
+            };
 
             if (fbd.ShowDialog() == DialogResult.OK)
                 txtSearchDirectory.Text = fbd.SelectedPath;
@@ -47,7 +51,7 @@ namespace RA.SearchAndReplaceAllText
         private string[] _files;
         private int _iFiles = -1;
         
-        private string[] getFiles()
+        private string[] GetFiles()
         {
             List<string> filesToReturn = new List<string>();
             try
@@ -66,7 +70,7 @@ namespace RA.SearchAndReplaceAllText
                         bool caseSensitive = chkCaseSensitive.Checked;
                         string texto = !caseSensitive ? txtFind.Text.ToUpper() : txtFind.Text;
 
-                        searchInDirectory(txtSearchDirectory.Text, txtSearchFilter.Text, chkSubdiretories.Checked, chkFileDirectoriesNames.Checked, texto, caseSensitive, filesToReturn);
+                        SearchInDirectory(txtSearchDirectory.Text, txtSearchFilter.Text, chkSubdiretories.Checked, chkFileDirectoriesNames.Checked, texto, caseSensitive, filesToReturn);
                     }
                     else
                         throw new DirectoryNotFoundException("The directory was not found.");
@@ -74,7 +78,7 @@ namespace RA.SearchAndReplaceAllText
             }
             catch (ThreadAbortException)
             {
-                writeLog("The search was stopped by user.");
+                WriteLog("The search was stopped by user.");
             }
             catch
             {
@@ -84,7 +88,7 @@ namespace RA.SearchAndReplaceAllText
             return filesToReturn.ToArray();
         }
 
-        private void searchInDirectory(string directorySearch, string searchFilter, bool searchInSubdiretories, bool searchInNames, string textSearch, bool caseSensitive, List<string> filesToReturn)
+        private void SearchInDirectory(string directorySearch, string searchFilter, bool searchInSubdiretories, bool searchInNames, string textSearch, bool caseSensitive, List<string> filesToReturn)
         {
             try
             {
@@ -93,21 +97,19 @@ namespace RA.SearchAndReplaceAllText
                 {
                     try
                     {
-                        string stringToSearch;
-                        if (!searchInNames)
-                            stringToSearch = !caseSensitive ? File.ReadAllText(fileToSeach).ToUpper() : File.ReadAllText(fileToSeach);
-                        else
-                        {
-                            FileInfo auxFile = new FileInfo(fileToSeach);
-                            stringToSearch = !caseSensitive ? auxFile.Name.ToUpper() : auxFile.Name;
-                        }
+                        string stringToSearch = searchInNames
+                            ? new FileInfo(fileToSeach).Name
+                            : File.ReadAllText(fileToSeach);
+
+                        if (!caseSensitive)
+                            stringToSearch = stringToSearch.ToUpperInvariant();
 
                         if (stringToSearch.Contains(textSearch))
                             filesToReturn.Add(fileToSeach);
                     }
                     catch (Exception ex)
                     {
-                        writeLog(String.Format("Could not verify the file {0}. Error: {1}", fileToSeach, ex.Message));
+                        WriteLog($"Could not verify the file {fileToSeach}. Error: {ex.Message}");
                     }
                 }
 
@@ -115,12 +117,12 @@ namespace RA.SearchAndReplaceAllText
                 {
                     string[] auxDirectories = Directory.GetDirectories(directorySearch);
                     foreach (string directoryToSearch in auxDirectories)
-                        searchInDirectory(directoryToSearch, searchFilter, searchInSubdiretories, searchInNames, textSearch, caseSensitive, filesToReturn);
+                        SearchInDirectory(directoryToSearch, searchFilter, searchInSubdiretories, searchInNames, textSearch, caseSensitive, filesToReturn);
                 }
             }
             catch (UnauthorizedAccessException)
             {
-                writeLog("There is no permission to ready the directory {0}", directorySearch);
+                WriteLog($"There is no permission to ready the directory {directorySearch}");
             }
             catch (ThreadAbortException)
             {
@@ -128,24 +130,19 @@ namespace RA.SearchAndReplaceAllText
             }
             catch (Exception ex)
             {
-                writeLog("An exception occurred while finding in {0}. {1}", directorySearch, ex.Message);
+                WriteLog($"An exception occurred while finding in {directorySearch}. {ex.Message}");
             }
         }
 
-        private void writeLog(string texto)
+        private void WriteLog(string texto)
         {
-            txtMessages.Text = texto + "\r\n" + txtMessages.Text;
+            txtMessages.Text = $"{texto}\r\n{txtMessages.Text}";
             Application.DoEvents();
-        }
-
-        private void writeLog(string texto, params object[] objs)
-        {
-            this.writeLog(String.Format(texto, objs));
         }
 
         private void btnFindAll_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtFind.Text))
+            if (string.IsNullOrEmpty(txtFind.Text))
             {
                 MyMessage.ShowError("Find text cannot be empty.");
                 txtFind.Focus();
@@ -157,12 +154,12 @@ namespace RA.SearchAndReplaceAllText
                     try
                     {
                         _iFiles = -1;
-                        _files = getFiles();
+                        _files = GetFiles();
                         for (int i = _files.Length; i > 0; i--)
-                            writeLog(i.ToString() + " - " + _files[i - 1]);
-                        writeLog("{0} files found.", _files.Length);
+                            WriteLog(i.ToString() + " - " + _files[i - 1]);
+                        WriteLog($"{_files.Length} files found.");
 
-                        txtPreview.Text = String.Empty;
+                        txtPreview.Text = string.Empty;
 
                     }
                     catch (ThreadAbortException) { }
@@ -177,7 +174,7 @@ namespace RA.SearchAndReplaceAllText
         private void btnFindNext_Click(object sender, EventArgs e)
         {
             string textToFind = txtFind.Text;
-            if (String.IsNullOrEmpty(textToFind))
+            if (string.IsNullOrEmpty(textToFind))
             {
                 MyMessage.ShowError("Find text cannot be empty.");
                 txtFind.Focus();
@@ -191,8 +188,8 @@ namespace RA.SearchAndReplaceAllText
                         if (_files.Length == 0)
                         {
                             _iFiles = -1;
-                            _files = getFiles();
-                            txtPreview.Text = String.Empty;
+                            _files = GetFiles();
+                            txtPreview.Text = string.Empty;
                         }
 
                         if (_files.Length == 0)
@@ -203,16 +200,16 @@ namespace RA.SearchAndReplaceAllText
                             if (_iFiles > _files.Length - 1)
                             {
                                 MyMessage.ShowInformation("No more files in the list.");
-                                txtPreview.Text = String.Empty;
+                                txtPreview.Text = string.Empty;
                             }
                             else
                             {
                                 if (chkFileDirectoriesNames.Checked)
-                                    writeLog("File found: {0}", _files[_iFiles]);
+                                    WriteLog($"File found: {_files[_iFiles]}");
                                 else
                                 {
                                     txtPreview.Text = File.ReadAllText(_files[_iFiles]);
-                                    writeLog("Reading {0}", _files[_iFiles]);
+                                    WriteLog($"Reading {_files[_iFiles]}");
 
                                     string textToSearch;
                                     if (!chkCaseSensitive.Checked)
@@ -224,7 +221,7 @@ namespace RA.SearchAndReplaceAllText
                                         textToSearch = txtPreview.Text;
 
                                     Regex r = new Regex(textToFind);
-                                    writeLog("{0} incidences", r.Matches(textToSearch).Count);
+                                    WriteLog($"{r.Matches(textToSearch).Count} incidences");
                                 }
                             }
                         }
@@ -247,13 +244,13 @@ namespace RA.SearchAndReplaceAllText
             {
                 if (!chkFileDirectoriesNames.Checked)
                 {
-                    File.WriteAllText(_files[_iFiles],
-                        txtPreview.Text.Replace(txtFind.Text, txtReplace.Text));
+                    Encoding encoding = DetectEncoding.GetEncoding(_files[_iFiles]);
+                    File.WriteAllText(_files[_iFiles], txtPreview.Text.Replace(txtFind.Text, txtReplace.Text), encoding);
                 }
                 else
                 { 
                     FileInfo auxFile = new FileInfo(_files[_iFiles]);
-                    auxFile.MoveTo(auxFile.DirectoryName + '\\' + auxFile.Name.Replace(txtFind.Text, txtReplace.Text));
+                    auxFile.MoveTo($"{auxFile.DirectoryName}\\{auxFile.Name.Replace(txtFind.Text, txtReplace.Text)}");
                 }
                 
                 this.btnFindNext_Click(sender, e);
@@ -262,7 +259,7 @@ namespace RA.SearchAndReplaceAllText
 
         private void btnReplaceAll_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtFind.Text))
+            if (string.IsNullOrEmpty(txtFind.Text))
             {
                 MyMessage.ShowError("Find text cannot be empty.");
                 txtFind.Focus();
@@ -277,7 +274,7 @@ namespace RA.SearchAndReplaceAllText
                                 || _iFiles >= _files.Length)
                             {
                                 _iFiles = -1;
-                                _files = getFiles();
+                                _files = GetFiles();
                             }
 
                             if (_files.Length == 0)
@@ -293,18 +290,19 @@ namespace RA.SearchAndReplaceAllText
                                     {
                                         auxTexto.Append(File.ReadAllText(_files[_iFiles]));
 
-                                        writeLog("Replacing {0} of {1} - {2}", _iFiles + 1, _files.Length, _files[_iFiles]);
+                                        WriteLog($"Replacing {_iFiles + 1} of {_files.Length} - {_files[_iFiles]}");
 
                                         try
                                         {
                                             r = new Regex(txtFind.Text);
-                                            writeLog("{0} incidences", r.Matches(auxTexto.ToString()).Count);
+                                            WriteLog($"{r.Matches(auxTexto.ToString()).Count} incidences");
                                         }
                                         catch { }
 
                                         auxTexto.Replace(txtFind.Text, txtReplace.Text);
 
-                                        File.WriteAllText(_files[_iFiles], auxTexto.ToString(), Encoding.Unicode);
+                                        Encoding encoding = DetectEncoding.GetEncoding(_files[_iFiles]);
+                                        File.WriteAllText(_files[_iFiles], auxTexto.ToString(), encoding);
 
                                         auxTexto.Remove(0, auxTexto.Length);
                                     }
@@ -313,10 +311,10 @@ namespace RA.SearchAndReplaceAllText
                                 {
                                     for (_iFiles++; _iFiles < _files.Length; _iFiles++)
                                     {
-                                        writeLog("Replacing {0} of {1} - {2}", _iFiles + 1, _files.Length, _files[_iFiles]);
+                                        WriteLog($"Replacing {_iFiles + 1} of {_files.Length} - {_files[_iFiles]}");
 
                                         FileInfo auxFile = new FileInfo(_files[_iFiles]);
-                                        auxFile.MoveTo(auxFile.DirectoryName + '\\' + auxFile.Name.Replace(txtFind.Text, txtReplace.Text));
+                                        auxFile.MoveTo($"{auxFile.DirectoryName}\\{auxFile.Name.Replace(txtFind.Text, txtReplace.Text)}");
                                     }
                                 }
                             }
@@ -385,7 +383,7 @@ namespace RA.SearchAndReplaceAllText
 
         private void FrmSearch_Load(object sender, EventArgs e)
         {
-            Control.CheckForIllegalCrossThreadCalls = false;
+            CheckForIllegalCrossThreadCalls = false;
 
             rbtnFile_CheckedChanged(sender, e);
         }
@@ -394,7 +392,7 @@ namespace RA.SearchAndReplaceAllText
         {
             _iFiles = -1;
             _files = new string[0];
-            txtPreview.Text = String.Empty;
+            txtPreview.Text = string.Empty;
         }
 
         private void txtFind_TextChanged(object sender, EventArgs e)
