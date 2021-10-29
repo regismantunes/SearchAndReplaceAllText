@@ -270,8 +270,8 @@ namespace RA.SearchAndReplaceAllText
                     {
                         try
                         {
-                            if (_iFiles == -1
-                                || _iFiles >= _files.Length)
+                            if (_iFiles == -1 
+                            || _iFiles >= _files.Length)
                             {
                                 _iFiles = -1;
                                 _files = GetFiles();
@@ -281,30 +281,28 @@ namespace RA.SearchAndReplaceAllText
                                 MyMessage.ShowError("No files found.");
                             else
                             {
+                                RegexOptions options = !chkCaseSensitive.Checked ? RegexOptions.IgnoreCase : RegexOptions.None;
+                                int countMatches = 0;
+                                string evaluator(Match m)
+                                {
+                                    countMatches++;
+                                    return txtReplace.Text;
+                                }
+
                                 if (!chkFileDirectoriesNames.Checked)
                                 {
-                                    StringBuilder auxTexto = new StringBuilder();
-                                    Regex r;
-
                                     for (_iFiles++; _iFiles < _files.Length; _iFiles++)
                                     {
-                                        auxTexto.Append(File.ReadAllText(_files[_iFiles]));
+                                        string fileContent = File.ReadAllText(_files[_iFiles]);
 
                                         WriteLog($"Replacing {_iFiles + 1} of {_files.Length} - {_files[_iFiles]}");
 
-                                        try
-                                        {
-                                            r = new Regex(txtFind.Text);
-                                            WriteLog($"{r.Matches(auxTexto.ToString()).Count} incidences");
-                                        }
-                                        catch { }
-
-                                        auxTexto.Replace(txtFind.Text, txtReplace.Text);
+                                        countMatches = 0;
+                                        string replacedContent = Regex.Replace(fileContent, txtFind.Text, evaluator, options);
+                                        WriteLog($"{countMatches} incidences");
 
                                         Encoding encoding = DetectEncoding.GetEncoding(_files[_iFiles]);
-                                        File.WriteAllText(_files[_iFiles], auxTexto.ToString(), encoding);
-
-                                        auxTexto.Remove(0, auxTexto.Length);
+                                        File.WriteAllText(_files[_iFiles], replacedContent, encoding);
                                     }
                                 }
                                 else
@@ -313,8 +311,11 @@ namespace RA.SearchAndReplaceAllText
                                     {
                                         WriteLog($"Replacing {_iFiles + 1} of {_files.Length} - {_files[_iFiles]}");
 
-                                        FileInfo auxFile = new FileInfo(_files[_iFiles]);
-                                        auxFile.MoveTo($"{auxFile.DirectoryName}\\{auxFile.Name.Replace(txtFind.Text, txtReplace.Text)}");
+                                        FileInfo file = new FileInfo(_files[_iFiles]);
+
+                                        string newFileName = Regex.Replace(file.Name, txtFind.Text, evaluator, options);
+
+                                        file.MoveTo(Path.Combine(file.DirectoryName, newFileName));
                                     }
                                 }
                             }
