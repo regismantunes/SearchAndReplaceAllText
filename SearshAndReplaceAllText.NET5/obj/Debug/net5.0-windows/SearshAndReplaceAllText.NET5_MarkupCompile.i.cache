@@ -1,19 +1,19 @@
 ﻿SearshAndReplaceAllText.NET5
-
+1.0.0.0
 
 winexe
 C#
 .cs
-D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\
+D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\net5.0-windows\
 SearshAndReplaceAllText.NET5
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\App.xaml
 11407045341
 
-3-1233169557
-192-1533232326
+5-386891653
+193-1891726104
 MainWindow.xaml;
 
 False

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Process = System.Diagnostics.Process;
 
 namespace RA.SearchAndReplaceAllText
 {
@@ -404,6 +405,27 @@ namespace RA.SearchAndReplaceAllText
         private void chkCaseSensitive_CheckedChanged(object sender, EventArgs e)
         {
             deleteSearch();
+        }
+
+        private void txtMessages_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = txtMessages.Text.Substring(0, txtMessages.SelectionStart + 1).LastIndexOf("\r\n");
+                i = i == -1 ? 0 : i + 2;
+                int j = txtMessages.Text.Substring(i).IndexOf("\r\n");
+                j = j == -1 ? txtMessages.Text.Length - i : j;
+                string linha = txtMessages.Text.Substring(i, j);
+
+                Match match = Regex.Match(linha, @"([A-Za-z]:\\|\\\\)([\w\s.-\[\]{}();~^`´¨,!@#$%&=+°'§¬¢-]+\\)*[\w\s.-\[\]{}();~^`´¨,!@#$%&=+°'§¬¢-]*\s*");
+
+                if (match.Success)
+                    TextFile.Open(match.Value);
+            }
+            catch (Exception ex)
+            {
+                MyMessage.ShowError(ex.Message);
+            }
         }
     }
 }

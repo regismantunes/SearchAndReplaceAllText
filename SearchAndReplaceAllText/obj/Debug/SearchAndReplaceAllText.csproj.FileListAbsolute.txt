@@ -7,3 +7,4 @@ D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\Searc
 D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.csproj.CoreCompileInputs.cache
 D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.exe
 D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.pdb
+D:\Source\GitHub\SearchAndReplaceAllText\SearchAndReplaceAllText\obj\Debug\SearchAndReplaceAllText.csproj.AssemblyReference.cache

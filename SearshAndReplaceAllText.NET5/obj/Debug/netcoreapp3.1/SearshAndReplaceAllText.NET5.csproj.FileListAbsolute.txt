@@ -4,7 +4,6 @@ D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\bin\Debug\
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\bin\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.runtimeconfig.dev.json
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\bin\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.dll
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\bin\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.pdb
-D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.csprojAssemblyReference.cache
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\App.g.cs
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5_MarkupCompile.cache
@@ -17,3 +16,5 @@ D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.dll
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.pdb
 D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.genruntimeconfig.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.csproj.AssemblyReference.cache
+D:\Source\GitHub\SearchAndReplaceAllText\SearshAndReplaceAllText.NET5\obj\Debug\netcoreapp3.1\SearshAndReplaceAllText.NET5.GeneratedMSBuildEditorConfig.editorconfig

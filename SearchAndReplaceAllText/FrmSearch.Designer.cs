@@ -384,6 +384,7 @@
             this.txtMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMessages.Size = new System.Drawing.Size(783, 95);
             this.txtMessages.TabIndex = 0;
+            this.txtMessages.DoubleClick += new System.EventHandler(this.txtMessages_DoubleClick);
             // 
             // FrmSearch
             // 
