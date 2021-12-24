@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace RA
 {
     public static class TextFile
-    {
+    {   
         private static string GetNotepadPlusPlusOpenCommand()
         {
             RegistryKey registryKey = Registry.ClassesRoot.OpenSubKey(@"Applications\notepad++.exe\shell\open\command");
@@ -32,14 +29,16 @@ namespace RA
             if (openCommand == null)
                 openCommand = GetNotepadOpenCommand();
 
-            int i = openCommand.IndexOf("\"%1\"");
-            string exeAddress = openCommand.Substring(0, i - 1);
-
-            Process process = new Process
+            string exeAddress;
+            if (openCommand[0] == '"')
             {
-                StartInfo = new ProcessStartInfo(exeAddress, $"\"{fileAddress}\"")
-            };
-            process.Start();
+                int i = openCommand.Substring(1).IndexOf('"') + 2;
+                exeAddress = openCommand.Substring(0, i);
+            }
+            else
+                exeAddress = openCommand.Split(' ')[0];
+
+            Process.Start(exeAddress, $"\"{fileAddress}\"");
         }
     }
 }
