@@ -1,8 +1,0 @@
-D:\Sistemas\Testes\LeSGold\LeSGold\bin\Debug\LeSGold.exe
-D:\Sistemas\Testes\LeSGold\LeSGold\bin\Debug\LeSGold.pdb
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\ResolveAssemblyReference.cache
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\LeSGold.Form1.resources
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\LeSGold.Properties.Resources.resources
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\LeSGold.csproj.GenerateResource.Cache
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\LeSGold.exe
-D:\Sistemas\Testes\LeSGold\LeSGold\obj\Debug\LeSGold.pdb
